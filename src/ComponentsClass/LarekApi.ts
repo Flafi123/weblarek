@@ -1,23 +1,22 @@
-import { Api } from '../components/base/Api';
-import { IProduct, IOrder, IOrderResult, IProductResponse } from '../types';
+import { IProduct, IOrder, IOrderResult, IProductResponse, IApi } from '../types';
 
 export interface ILarekApi {
     getProductList: () => Promise<IProduct[]>;
     orderProducts: (order: IOrder) => Promise<IOrderResult>;
 }
 
-export class LarekApi extends Api implements ILarekApi {
+export class LarekApi implements ILarekApi {
+    private _api: IApi; 
     readonly cdn: string;
 
-    constructor(cdn: string, baseUrl: string, options?: RequestInit) {
-        super(baseUrl, options);
+    constructor(cdn: string, api: IApi) {
         this.cdn = cdn;
+        this._api = api; 
     }
 
     // Получаем список товаров
     getProductList(): Promise<IProduct[]> {
-        // Явно указываем тип возвращаемых данных <IProductResponse>
-        return this.get<IProductResponse>('/product').then((data) =>
+        return this._api.get<IProductResponse>('/product').then((data) =>
             data.items.map((item) => ({
                 ...item,
                 image: this.cdn + item.image
@@ -27,8 +26,7 @@ export class LarekApi extends Api implements ILarekApi {
 
     // Отправляем заказ
     orderProducts(order: IOrder): Promise<IOrderResult> {
-        // Явно указываем тип ответа сервера <IOrderResult>
-        return this.post<IOrderResult>('/order', order).then(
+        return this._api.post<IOrderResult>('/order', order).then(
             (data) => data
         );
     }
