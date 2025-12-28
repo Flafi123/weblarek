@@ -2,7 +2,7 @@ import { IBuyer, PaymentMethod } from '../types';
 
 export type BuyerErrors = Partial<Record<keyof IBuyer, string>>;
 
-export class Buyer{
+export class Buyer {
   protected _payment: PaymentMethod | null = null;
   protected _address: string = '';
   protected _phone: string = '';

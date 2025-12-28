@@ -6,12 +6,12 @@ export interface ILarekApi {
 }
 
 export class LarekApi implements ILarekApi {
-    private _api: IApi; 
+    private _api: IApi;
     readonly cdn: string;
 
     constructor(cdn: string, api: IApi) {
         this.cdn = cdn;
-        this._api = api; 
+        this._api = api;
     }
 
     // Получаем список товаров

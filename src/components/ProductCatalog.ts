@@ -1,6 +1,6 @@
 import { IProduct } from "../types"
 export class ProductCatalog {
-    
+
     protected _items: IProduct[] = [];
     protected _preview: IProduct | null = null;
 
