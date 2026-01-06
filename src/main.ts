@@ -29,7 +29,6 @@ larekApi.getProductList()
         if (savedItems.length > 0) {
             console.log('✅ Данные в модели сохранены корректно');
             
-            // ИЗМЕНЕНИЕ: Безопасное получение элементов
             const firstProduct = savedItems[0]; 
             const secondProduct = savedItems[1] || savedItems[0];
 
@@ -71,7 +70,6 @@ larekApi.getProductList()
         console.log('12. Данные покупателя после очистки:', buyerModel.getData());
     })
     .catch(err => {
-        // ИЗМЕНЕНИЕ: Более подробный вывод ошибки
         console.error('Ошибка инициализации данных:', err);
         console.warn('Если выше ошибка SyntaxError, значит сервер по адресу ' + API_URL + ' вернул HTML вместо JSON. Проверьте .env и ПЕРЕЗАПУСТИТЕ сервер (npm run dev)');
     });

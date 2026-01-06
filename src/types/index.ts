@@ -37,3 +37,59 @@ export interface IOrderResult {
   id: string;
   total: number;
 }
+
+export interface Header{
+  backetButton: HTMLButtonElement;
+  counterElement: HTMLElement;
+  setCounter(value: number): void;
+}
+
+export interface HeaderData extends Header{
+  counter: number;
+}
+
+export interface Gallery{
+  catalogElement: HTMLElement;
+  setCatalog(items: HTMLElement[]): void;
+}
+
+export interface GalleryData extends Gallery {
+  catalog: HTMLElement;
+}
+
+export interface CardInGallery {
+  cardElementinGallery: HTMLElement;
+}
+
+export interface CardInGalleryData extends CardInGallery {
+  category: string;
+  title: string;
+  image: string;
+  price: number;
+}
+
+export interface Basket{
+  basketElement: HTMLElement;
+  setBasket(items: HTMLElement[]): void;
+}
+
+export interface BasketData extends Basket {
+  basket: HTMLElement;
+}
+
+export interface CardInBasket {
+  cardElementinBasket: HTMLElement;
+  deleteButton: HTMLButtonElement;
+}
+
+export interface CardInBasketData extends CardInBasket {
+  id: number;
+  title: string;
+  price: number;
+}
+
+export interface FormСoise {
+    
+}
+
+
