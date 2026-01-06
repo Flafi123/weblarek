@@ -163,7 +163,7 @@ Presenter - презентер содержит основную логику п
 `getProductList()` - Выполняет GET-запрос на /product/. Получает список товаров, преобразует пути к изображениям (добавляя CDN-хост) и возвращает массив объектов IProduct.
 `orderProducts(order: IOrder)` - Выполняет POST-запрос на /order/, отправляя данные о заказе (способе оплаты, контактах и списке ID товаров). Возвращает результат оформления заказа.
 
-##### Слой View
+###### Слой View
 
  Список карточек - `gallery`
     Карточка
@@ -222,59 +222,112 @@ Presenter - презентер содержит основную логику п
     Форма
 
 
-HeaderData 
-  counter: number - `header__basket-counter`
+#### Header и Списки
 
 Header - `header__container`
     backetButton: HTMLButtonElement - `header__basket`
-    counterElement: HTMLElement
+    counterElement: HTMLElement 
     setCounter(value: number): void
 
-GalleryData
-    catalog: HTMLElement - `card-catalog`
+HeaderData 
+  counter: number 
 
 Gallery
-    catalogElement: HTMLElement - `gallery__item`
-    setCatalog(items: HTMLElement[]): void
+    galleryElement: HTMLButtonElement - `gallery__item`
+    setGallery(items: HTMLElement[]): void    
 
-CardInGallery 
-    cardElementinGallery: HTMLElement - `gallery__item card`                
-
-CardInGalleryData
-    title: string - `card__titl`
-    price: number - `card__price`
-    category: string - `card__categor`
-    image: string - `card__image`
-    
-    setCategory(value: string): void
-    setTitle(value: string): void
-    setImage(value: string): void
-    setPrice(value: number): void
-
-BasketData
-  basket: HTMLElement - `basket`
+GalleryData
+    gallery: HTMLElement[]
 
 Basket
-  basketElement: HTMLElement - `card-basket`
+  basketElement: HTMLElement - `basket__item`
   setBasket(items: HTMLElement[]): void
 
+BasketData
+  basket: HTMLElement 
+
+#### Карточки
 
 Класс Card
     title: string - `card__title`
-    prise: number - `card__price`
+    prise: string - `card__price`
+    setTitle(value: string): void
+    setPrice(value: string): void
+
+CardData
+    title: string
+    prise: number
 
 Класс CardInGallery extends Card
     category: string - `card__category`
     image: string - `card__image`
+    setCategory(value: string): void
+    setImage(value: string): void
+
+CardInGalleryData
+    category: string
+    image: string
 
 Класс CardInBasket extends Card
     id: number - `basket__item-index`
+    setId(value: number): void
+
+CardInBasketData
+    id: number
 
 Класс CardInPreview extends Card
     category: string - `card__category`
     image: string - `card__image`
     text: string - `card__text`
+    setCategory(value: string): void
+    setImage(value: string): void
+    setText(value: string): void
 
+CardInPreviewData
+    category: string
+    image: string
+    text: string
+
+Класс Modal
+    modalСontent: HTMLElement - `modal__content`
+    closeButton: HTMLButtonElement - `modal__close`
+    setСontent(items: HTMLElement[]): void
+
+ModalData
+    content: HTMLElement
+
+Класс ModalSuccess
+    title: string - `order-success__title`
+    text: string - `order-success__description`
+    buttonClose: HTMLButtonElement - `order-success__close`
+    setTitle(value: string): void
+    setText(value: string): void
+
+ModalSuccessData
+    title: string
+    description: string
 
 Класс Form
+    formTitle: string - `modal__title form__label`
+    formInput: string - `modal__title form__input`
+    textErrors: string - `form__errors`
+    setFormTitle(value: string): void
+    setFormInput(value: string): void
+    setTextErrors(value: string): void
+
+Клас FormOrder extends Form
     title: string - `modal__title`
+    buttonsOrder: HTMLButtonElement  - `button_alt`
+    buttonSubmit: HTMLButtonElement - `order__button`
+    setTitle(value: string): void
+
+Клас FormContacts extends Form
+    buttonSubmit: HTMLButtonElement - `button`
+
+
+
+
+
+
+
+
