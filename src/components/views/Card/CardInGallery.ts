@@ -1,7 +1,7 @@
 import { Card } from "./Card";
-import { IEvents } from "../../Events"; 
-import { ensureElement } from "../../../../utils/utils";
-import { categoryMap } from "../../../../utils/constants"; 
+import { IEvents } from "../../base/Events";
+import { ensureElement } from "../../../utils/utils";
+import { categoryMap } from "../../../utils/constants";
 
 
 interface ICardInGalleryActions {
@@ -9,11 +9,11 @@ interface ICardInGalleryActions {
 }
 
 export class CardInGallery extends Card {
-    protected _category: HTMLElement; 
+    protected _category: HTMLElement;
     protected _image: HTMLImageElement;
 
     constructor(container: HTMLElement, events: IEvents, actions?: ICardInGalleryActions) {
-        super(events, container); 
+        super(events, container);
         this._category = ensureElement<HTMLElement>('.card__category', container);
         this._image = ensureElement<HTMLImageElement>('.card__image', container);
 

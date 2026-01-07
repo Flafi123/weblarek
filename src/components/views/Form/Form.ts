@@ -1,6 +1,6 @@
-import { Component } from "../../Component";
-import { ensureElement } from "../../../../utils/utils";
-import { IEvents } from "../../Events";
+import { Component } from "../../base/Component";
+import { ensureElement } from "../../../utils/utils";
+import { IEvents } from "../../base/Events";
 
 interface IFormState {
     valid: boolean;
@@ -44,10 +44,10 @@ export class Form<T> extends Component<IFormState> {
         const { valid, errors, ...formInputs } = data;
         super.render({ valid, errors });
         Object.assign(this, formInputs);
-        
+
         return this.container;
     }
-    
+
     clear() {
         (this.container as HTMLFormElement).reset();
     }

@@ -1,13 +1,13 @@
-import { Component } from "../Component";
-import { ensureElement } from "../../../utils/utils";
-import { IEvents } from "../Events";
+import { Component } from "../base/Component";
+import { ensureElement } from "../../utils/utils";
+import { IEvents } from "../base/Events";
 
 interface IModal {
     content: HTMLElement;
 }
 
 export class Modal extends Component<IModal> {
-    public modalContent: HTMLElement; 
+    public modalContent: HTMLElement;
     protected closeButton: HTMLButtonElement;
 
     constructor(container: HTMLElement, protected events: IEvents) {
@@ -32,7 +32,7 @@ export class Modal extends Component<IModal> {
 
     close() {
         this.container.classList.remove('modal_active');
-        this.modalContent.replaceChildren(); 
+        this.modalContent.replaceChildren();
         this.events.emit('modal:close');
     }
 

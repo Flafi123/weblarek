@@ -1,8 +1,8 @@
-import { Component } from "../Component";
-import { IEvents } from "../Events";
+import { Component } from "../base/Component";
+import { IEvents } from "../base/Events";
 
 interface IGallery {
-    catalog: HTMLElement[]; 
+    catalog: HTMLElement[];
 }
 
 export class Gallery extends Component<IGallery> {

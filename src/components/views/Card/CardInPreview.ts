@@ -1,7 +1,7 @@
 import { Card } from "./Card";
-import { IEvents } from "../../Events";
-import { ensureElement } from "../../../../utils/utils";
-import { categoryMap } from "../../../../utils/constants"; 
+import { IEvents } from "../../base/Events";
+import { ensureElement } from "../../../utils/utils";
+import { categoryMap } from "../../../utils/constants";
 
 interface ICardActions {
     onClick: (event: MouseEvent) => void;
@@ -25,7 +25,7 @@ export class CardInPreview extends Card {
             this._button.addEventListener('click', actions.onClick);
         }
     }
-    
+
     set description(value: string) {
         this._description.textContent = value;
     }
@@ -47,13 +47,13 @@ export class CardInPreview extends Card {
     }
 
     set price(value: number | null) {
-    super.price = value;
+        super.price = value;
 
-    if (value === null) {
-        this._button.disabled = true;
-        this.buttonText = 'Недоступно';
-    } else {
-        this._button.disabled = false;
+        if (value === null) {
+            this._button.disabled = true;
+            this.buttonText = 'Недоступно';
+        } else {
+            this._button.disabled = false;
+        }
     }
-}
 }

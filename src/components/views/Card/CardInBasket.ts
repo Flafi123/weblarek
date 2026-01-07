@@ -1,6 +1,6 @@
 import { Card } from "./Card";
-import { IEvents } from "../../Events"; 
-import { ensureElement } from "../../../../utils/utils";
+import { IEvents } from "../../base/Events";
+import { ensureElement } from "../../../utils/utils";
 
 interface ICardInBasketActions {
     onClick: (event: MouseEvent) => void;
@@ -11,7 +11,7 @@ export class CardInBasket extends Card {
     protected _button: HTMLButtonElement;
 
     constructor(container: HTMLElement, events: IEvents, actions?: ICardInBasketActions) {
-        super(events, container); 
+        super(events, container);
 
         this._index = ensureElement<HTMLElement>('.basket__item-index', container);
         this._button = ensureElement<HTMLButtonElement>('.basket__item-delete', container);

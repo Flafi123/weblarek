@@ -1,8 +1,8 @@
-import { ensureElement } from "../../../../utils/utils";
-import { IEvents } from "../../Events";
+import { ensureElement } from "../../../utils/utils";
+import { IEvents } from "../../base/Events";
 import { Form } from "./Form";
-import { IOrderForm } from "../../../../types";
-import { PaymentMethod } from "../../../../types";
+import { IOrderForm } from "../../../types";
+import { PaymentMethod } from "../../../types";
 
 export class FormOrder extends Form<IOrderForm> {
     protected _title: HTMLElement;
@@ -18,7 +18,6 @@ export class FormOrder extends Form<IOrderForm> {
 
         this._buttonsOrder.forEach(button => {
             button.addEventListener('click', () => {
-                this.togglePaymentMethod(button.name);
                 this.events.emit('payment:change', { target: button.name });
             });
         });

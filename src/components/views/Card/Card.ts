@@ -1,15 +1,15 @@
-import { Component } from "../../Component";
-import { ensureElement } from "../../../../utils/utils";
-import { IEvents } from "../../Events";
+import { Component } from "../../base/Component";
+import { ensureElement } from "../../../utils/utils";
+import { IEvents } from "../../base/Events";
 
 interface ICard {
     title: string;
     price: number | null;
-    category?: string; 
-    image?: string;   
-    description?: string; 
-    buttonText?: string; 
-    isInBasket?: boolean; 
+    category?: string;
+    image?: string;
+    description?: string;
+    buttonText?: string;
+    isInBasket?: boolean;
     index?: number;
 }
 
@@ -28,8 +28,8 @@ export class Card extends Component<ICard> {
     }
 
     set price(value: number | null) {
-    this._price.textContent = (value !== null) 
-        ? `${value} синапсов` 
-        : 'Бесценно';
-}
+        this._price.textContent = (value !== null)
+            ? `${value} синапсов`
+            : 'Бесценно';
+    }
 }
