@@ -87,8 +87,8 @@ events.on('card:select', (item: IProduct) => {
             image: item.image,
             category: item.category,
             description: item.description,
+            buttonText: basketModel.contains(item.id) ? 'Уже в корзине' : 'В корзину',
             price: item.price,
-            buttonText: basketModel.contains(item.id) ? 'Уже в корзине' : 'В корзину'
         })
     });
 });

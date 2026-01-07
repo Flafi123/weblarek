@@ -1,8 +1,7 @@
 import { Component } from "../../Component";
-import { ensureElement, createElement } from "../../../../utils/utils";
+import { ensureElement } from "../../../../utils/utils";
 import { IEvents } from "../../Events";
 
-// Интерфейс состояния формы
 interface IFormState {
     valid: boolean;
     errors: string[];

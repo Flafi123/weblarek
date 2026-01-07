@@ -41,16 +41,16 @@ export class Buyer {
     const errors: BuyerErrors = {};
 
     if (!this._payment) {
-      errors.payment = 'Не выбран вид оплаты';
+      errors.payment = 'Необходимо указать вид оплаты';
     }
     if (!this._address || this._address.trim() === '') {
-      errors.address = 'Не указан адрес доставки';
+      errors.address = 'Необходимо указать адрес доставки';
     }
     if (!this._phone || this._phone.trim() === '') {
-      errors.phone = 'Не указан номер телефона';
+      errors.phone = 'Необходимо указать номер телефона';
     }
     if (!this._email || this._email.trim() === '') {
-      errors.email = 'Не указан email';
+      errors.email = 'Необходимо указать email';
     }
 
     return errors;

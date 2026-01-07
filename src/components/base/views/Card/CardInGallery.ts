@@ -8,10 +8,6 @@ interface ICardInGalleryActions {
     onClick: (event: MouseEvent) => void;
 }
 
-interface ICardInGallery {
-    category: string;
-}
-
 export class CardInGallery extends Card {
     protected _category: HTMLElement; 
     protected _image: HTMLImageElement;
