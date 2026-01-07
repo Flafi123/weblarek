@@ -5,6 +5,11 @@ export interface IApi {
     post<T extends object>(uri: string, data: object, method?: ApiPostMethods): Promise<T>;
 }
 
+export interface IOrderForm {
+    payment: PaymentMethod;
+    address: string;
+}
+
 export interface IProduct {
     id: string;
     description: string;
@@ -60,3 +65,4 @@ export interface IFormChoice {
     address: string;
     errors: string;
 }
+

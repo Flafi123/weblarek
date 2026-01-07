@@ -7,25 +7,21 @@ interface ICardInBasketActions {
 }
 
 export class CardInBasket extends Card {
-    protected index: HTMLElement;
-    protected button: HTMLButtonElement;
+    protected _index: HTMLElement;
+    protected _button: HTMLButtonElement;
 
     constructor(container: HTMLElement, events: IEvents, actions?: ICardInBasketActions) {
         super(events, container); 
 
-        this.index = ensureElement<HTMLElement>('.basket__item-index', container);
-        this.button = ensureElement<HTMLButtonElement>('.basket__item-delete', container);
+        this._index = ensureElement<HTMLElement>('.basket__item-index', container);
+        this._button = ensureElement<HTMLButtonElement>('.basket__item-delete', container);
 
         if (actions?.onClick) {
-            this.button.addEventListener('click', actions.onClick);
+            this._button.addEventListener('click', actions.onClick);
         }
     }
 
-    setIndex(value: number) {
-        this.index.textContent = value.toString();
-    }
-    
-    setButtonText(value: string) {
-        this.button.textContent = value;
+    set index(value: number) {
+        this._index.textContent = value.toString();
     }
 }

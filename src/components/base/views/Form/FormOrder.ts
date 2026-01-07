@@ -1,20 +1,22 @@
 import { ensureElement } from "../../../../utils/utils";
 import { IEvents } from "../../Events";
 import { Form } from "./Form";
+import { IOrderForm } from "../../../../types";
+import { PaymentMethod } from "../../../../types";
 
-export class FormOrder extends Form<any> {
-    protected title: HTMLElement;
-    protected buttonsOrder: HTMLButtonElement[];
-    protected buttonSubmit: HTMLButtonElement;
+export class FormOrder extends Form<IOrderForm> {
+    protected _title: HTMLElement;
+    protected _buttonsOrder: HTMLButtonElement[];
+    protected _buttonSubmit: HTMLButtonElement;
 
     constructor(container: HTMLFormElement, events: IEvents) {
         super(container, events);
 
-        this.title = ensureElement<HTMLElement>('.modal__title', container);
-        this.buttonSubmit = ensureElement<HTMLButtonElement>('.order__button', container);
-        this.buttonsOrder = Array.from(container.querySelectorAll('.button_alt'));
+        this._title = ensureElement<HTMLElement>('.modal__title', container);
+        this._buttonSubmit = ensureElement<HTMLButtonElement>('.order__button', container);
+        this._buttonsOrder = Array.from(container.querySelectorAll('.button_alt'));
 
-        this.buttonsOrder.forEach(button => {
+        this._buttonsOrder.forEach(button => {
             button.addEventListener('click', () => {
                 this.togglePaymentMethod(button.name);
                 this.events.emit('payment:change', { target: button.name });
@@ -22,12 +24,16 @@ export class FormOrder extends Form<any> {
         });
     }
 
-    setTitle(value: string) {
-        this.title.textContent = value;
+    set title(value: string) {
+        this._title.textContent = value;
+    }
+
+    set payment(value: PaymentMethod) {
+        this.togglePaymentMethod(value);
     }
 
     togglePaymentMethod(name: string) {
-        this.buttonsOrder.forEach(button => {
+        this._buttonsOrder.forEach(button => {
             button.classList.toggle('button_alt-active', button.name === name);
         });
     }

@@ -1,30 +1,39 @@
 import { Card } from "./Card";
 import { IEvents } from "../../Events"; 
 import { ensureElement } from "../../../../utils/utils";
+import { categoryMap } from "../../../../utils/constants"; 
 
-interface ICardActions {
+
+interface ICardInGalleryActions {
     onClick: (event: MouseEvent) => void;
 }
 
-export class CardInGallery extends Card {
-    protected category: HTMLElement;
-    protected image: HTMLImageElement;
+interface ICardInGallery {
+    category: string;
+}
 
-    constructor(container: HTMLElement, events: IEvents, actions?: ICardActions) {
+export class CardInGallery extends Card {
+    protected _category: HTMLElement; 
+    protected _image: HTMLImageElement;
+
+    constructor(container: HTMLElement, events: IEvents, actions?: ICardInGalleryActions) {
         super(events, container); 
-        this.category = ensureElement<HTMLElement>('.card__category', container);
-        this.image = ensureElement<HTMLImageElement>('.card__image', container);
+        this._category = ensureElement<HTMLElement>('.card__category', container);
+        this._image = ensureElement<HTMLImageElement>('.card__image', container);
 
         if (actions?.onClick) {
             container.addEventListener('click', actions.onClick);
         }
     }
 
-    setCategory(value: string) {
-        this.category.textContent = value;
+    set category(value: string) {
+        this._category.textContent = value;
+        this._category.className = 'card__category';
+        const categoryClass = categoryMap[value as keyof typeof categoryMap] || categoryMap['другое'];
+        this._category.classList.add(categoryClass);
     }
 
-    setCardImage(value: string) {
-        super.setImage(this.image, value, this.title.textContent || '');
+    set image(value: string) {
+        super.setImage(this._image, value, this._title.textContent || '');
     }
 }
